@@ -3,7 +3,7 @@ FROM slatrach/php8-apache:latest
 RUN apt-get update \
     && apt-get install -y libaio-dev
 
-# Oracle instantclient
+# Oracle instantclient 
 COPY ./instantclient/12.2.0.1.0/instantclient-basiclite-linux.x64-12.2.0.1.0.zip /tmp/
 COPY ./instantclient/12.2.0.1.0/instantclient-sdk-linux.x64-12.2.0.1.0.zip /tmp/
 COPY ./instantclient/12.2.0.1.0/instantclient-sqlplus-linux.x64-12.2.0.1.0.zip /tmp/
@@ -23,7 +23,6 @@ RUN echo 'instantclient,/usr/local/instantclient' | pecl install oci8
 RUN echo "extension=oci8.so" > /usr/local/etc/php/conf.d/php-oci8.ini
 
 WORKDIR /var/www/
-
 
 
 
