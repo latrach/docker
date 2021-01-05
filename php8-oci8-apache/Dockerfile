@@ -1,8 +1,8 @@
-FROM slatrach/php8-apache:1.1
+FROM slatrach/php8-apache:latest
 
 RUN apt-get update \
     && apt-get install -y libaio-dev
-    
+
 # Oracle instantclient
 COPY ./instantclient/12.2.0.1.0/instantclient-basiclite-linux.x64-12.2.0.1.0.zip /tmp/
 COPY ./instantclient/12.2.0.1.0/instantclient-sdk-linux.x64-12.2.0.1.0.zip /tmp/
