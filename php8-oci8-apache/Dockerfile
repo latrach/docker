@@ -1,12 +1,12 @@
-FROM slatrach/php8-apache:latest
+FROM slatrach/php8-apache:1.1
 
 RUN apt-get update \
     && apt-get install -y libaio-dev
 
 # Oracle instantclient 
-ADD instantclient/12.2.0.1.0/instantclient-basiclite-linux.x64-12.2.0.1.0.zip /tmp/
-ADD instantclient/12.2.0.1.0/instantclient-sdk-linux.x64-12.2.0.1.0.zip /tmp/
-ADD instantclient/12.2.0.1.0/instantclient-sqlplus-linux.x64-12.2.0.1.0.zip /tmp/
+ADD https://github.com/latrach/docker/raw/main/php8-oci8-apache/instantclient/12.2.0.1.0/instantclient-basiclite-linux.x64-12.2.0.1.0.zip /tmp/
+ADD https://github.com/latrach/docker/raw/main/php8-oci8-apache/instantclient/12.2.0.1.0/instantclient-sdk-linux.x64-12.2.0.1.0.zip /tmp/
+ADD https://github.com/latrach/docker/raw/main/php8-oci8-apache/instantclient/12.2.0.1.0/instantclient-sqlplus-linux.x64-12.2.0.1.0.zip /tmp/
 
 RUN unzip /tmp/instantclient-basiclite-linux.x64-12.2.0.1.0.zip -d /usr/local/
 RUN unzip /tmp/instantclient-sdk-linux.x64-12.2.0.1.0.zip -d /usr/local/
