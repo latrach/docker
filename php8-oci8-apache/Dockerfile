@@ -1,7 +1,7 @@
 FROM slatrach/php8-apache:1.1
 
 RUN apt-get update \
-    && apt-get install -y libaio-dev
+    && apt-get install -y libaio-dev autossh
 
 # Oracle instantclient 
 ADD https://github.com/latrach/docker/raw/main/php8-oci8-apache/instantclient/12.2.0.1.0/instantclient-basiclite-linux.x64-12.2.0.1.0.zip /tmp/
@@ -22,8 +22,8 @@ RUN echo 'umask 002' >> /root/.bashrc
 RUN echo 'instantclient,/usr/local/instantclient' | pecl install oci8
 RUN echo "extension=oci8.so" > /usr/local/etc/php/conf.d/php-oci8.ini
 
+RUN rm /tmp/instantclient-basiclite-linux.x64-12.2.0.1.0.zip
+RUN rm /tmp/instantclient-sdk-linux.x64-12.2.0.1.0.zip
+RUN rm /tmp/instantclient-sqlplus-linux.x64-12.2.0.1.0.zip
+
 WORKDIR /var/www/
-
-
-
-
